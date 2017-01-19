@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
+import {StyleSheet, View, TextInput, Button} from 'react-native';
 
 export default class TodoInput extends Component {
 
@@ -11,14 +11,38 @@ export default class TodoInput extends Component {
         }
     }
 
+    onSubmit() {
+        
+    }
+
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <TextInput
-                    style={{height: 40}}
+                    style={styles.input}
                     placeholder="Type here to translate!"
                     onChangeText={(text) => this.setState({text})} />
+                <Button
+                    style={styles.submit}
+                    title='Add'
+                    color="black"
+                    onPress={this.onSubmit} />
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 7,
+        flexDirection: 'row',
+    },
+    input: {
+        height: 40,
+        flexGrow: 1,
+    },
+    submit: {
+        backgroundColor: 'blue',
+        height: 40,
+    }
+});
