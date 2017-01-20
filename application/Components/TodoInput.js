@@ -35,16 +35,18 @@ export default class TodoInput extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 7,
+        padding: 8,
         flexDirection: 'row',
+        alignItems: 'center',
         backgroundColor: '#C1C1C1',
     },
     input: {
         height: 40,
+        padding: 8,
+        backgroundColor: '#FFF',
         flexGrow: 1,
     },
     submit: {
-        backgroundColor: 'blue',
         height: 40,
     }
 });

@@ -6,6 +6,7 @@ import {
     View,
     ListView
 } from 'react-native';
+import {default as Row} from './TodoListViewRow';
 
 export default class TodoList extends Component {
 
@@ -19,13 +20,20 @@ export default class TodoList extends Component {
     }
 
     render() {
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
         return (
             <ListView
                 style={styles.container}
-                dataSource={this.state.dataSource}
-                renderRow={(data) => <View><Text>{data}</Text></View>}
+                dataSource={ds.cloneWithRows(this.props.todos)}
+                renderRow={(data) => <Row data={data} />}
+                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         );
+    }
+
+    _renderRow() {
+
     }
 }
 
@@ -34,6 +42,10 @@ const styles = StyleSheet.create({
         height: 100,
         flexGrow: 1,
         backgroundColor: 'white',
-        marginTop: 20,
-    }
+    },
+    separator: {
+        flex: 1,
+        height: StyleSheet.hairlineWidth,
+        backgroundColor: '#8E8E8E',
+    },
 });

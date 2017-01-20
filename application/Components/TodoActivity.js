@@ -18,8 +18,11 @@ export default class TodoActivity extends Component {
     }
 
     handleTodoInsert = (value) => {
+        console.log(value);
         this.setState({
             todos: this.state.todos.concat([value]),
+        }, () => {
+            console.log(this.state.todos)
         });
     };
 
@@ -37,6 +40,5 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 20,
         flex: 1,
-        backgroundColor: 'red',
     },
 });

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { View, ListView, StyleSheet, Text } from 'react-native';
 import Row from './ListViewDemoRow'
-import data from '../Data/demoData'
+import data from '../../Data/demoData'
 import ListViewDemoHeader from './ListViewDemoHeader'
 
 export default class ListViewDemo extends Component {
