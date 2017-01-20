@@ -14,6 +14,9 @@ export default class TodoInput extends Component {
 
     onSubmit() {
         let text = this.state.text;
+        if (text === '') {
+            return
+        }
         this.setState({
             text: '',
         }, () => {
