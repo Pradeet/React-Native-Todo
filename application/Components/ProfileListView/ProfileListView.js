@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { View, ListView, StyleSheet, Text } from 'react-native';
-import Row from './ListViewDemoRow'
+import {default as Row} from './ProfileListViewRow'
 import data from '../../Data/demoData'
-import ListViewDemoHeader from './ListViewDemoHeader'
+import {default as Header} from './ProfileListViewHeader'
 
-export default class ListViewDemo extends Component {
+export default class ProfileListView extends Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +22,7 @@ export default class ListViewDemo extends Component {
                 dataSource={this.state.dataSource}
                 renderRow={(data) => <Row {...data} />}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                renderHeader={() => <ListViewDemoHeader />}
+                renderHeader={() => <Header />}
             />
         );
     }

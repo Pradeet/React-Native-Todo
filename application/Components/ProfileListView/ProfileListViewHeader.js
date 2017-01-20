@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
-export default class ListViewDemoHeader extends React.Component {
+export default class ProfileListViewHeader extends React.Component {
 
     constructor(props) {
         super(props);

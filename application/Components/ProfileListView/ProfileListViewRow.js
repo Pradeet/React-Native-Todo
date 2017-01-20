@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
 });
 
-// const Row = (props) => (
+// const ProfileListViewRow = (props) => (
 //     <View style={styles.container}>
 //         <Image source={{ uri: props.picture.large}} style={styles.photo} />
 //         <Text style={styles.text}>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 //     </View>
 // );
 
-class Row extends React.Component {
+class ProfileListViewRow extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -46,4 +46,4 @@ class Row extends React.Component {
     }
 }
 
-export default Row;
+export default ProfileListViewRow;
