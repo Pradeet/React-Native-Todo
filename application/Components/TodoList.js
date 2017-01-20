@@ -31,10 +31,6 @@ export default class TodoList extends Component {
             />
         );
     }
-
-    _renderRow() {
-
-    }
 }
 
 const styles = StyleSheet.create({
