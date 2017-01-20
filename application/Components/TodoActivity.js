@@ -8,11 +8,26 @@ import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 
 export default class TodoActivity extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todos: ['Clean Code'],
+        };
+    }
+
+    handleTodoInsert = (value) => {
+        this.setState({
+            todos: this.state.todos.concat([value]),
+        });
+    };
+
     render() {
         return (
             <View style={styles.container}>
-                <TodoInput />
-                <TodoList />
+                <TodoInput onChange={this.handleTodoInsert}/>
+                <TodoList todos={this.state.todos}/>
             </View>
         );
     }

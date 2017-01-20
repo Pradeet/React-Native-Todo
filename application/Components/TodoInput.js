@@ -6,13 +6,14 @@ export default class TodoInput extends Component {
     constructor(props) {
         super(props);
 
+        this.onSubmit = this.onSubmit.bind(this);
         this.state = {
             text: '',
         }
     }
 
     onSubmit() {
-        
+        this.props.onChange(this.state.text);
     }
 
     render() {
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
     container: {
         padding: 7,
         flexDirection: 'row',
+        backgroundColor: '#C1C1C1',
     },
     input: {
         height: 40,
