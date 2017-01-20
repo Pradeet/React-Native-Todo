@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, Button} from 'react-native';
+import {StyleSheet, View, TextInput, Button, TouchableHighlight, Text} from 'react-native';
 
 export default class TodoInput extends Component {
 
@@ -15,7 +15,7 @@ export default class TodoInput extends Component {
     onSubmit() {
         let text = this.state.text;
         this.setState({
-            text: ' ',
+            text: '',
         }, () => {
             this.props.onChange(text);
         })
@@ -25,14 +25,16 @@ export default class TodoInput extends Component {
         return (
             <View style={styles.container}>
                 <TextInput
+                    value={this.state.text}
                     style={styles.input}
-                    placeholder="Type here to translate!"
+                    placeholder="Type here to Add Todo"
                     onChangeText={(text) => this.setState({text})} />
-                <Button
-                    style={styles.submit}
-                    title='Add'
-                    color="black"
-                    onPress={this.onSubmit} />
+                <TouchableHighlight
+                    style={styles.button}
+                    underlayColor='#DDD'
+                    onPress={() => this.onSubmit()}>
+                    <Text style={styles.btnText}>Add!</Text>
+                </TouchableHighlight>
             </View>
         )
     }
@@ -40,18 +42,32 @@ export default class TodoInput extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 8,
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#C1C1C1',
+        marginTop: 5,
+        padding: 10,
+        flexDirection: 'row'
     },
     input: {
-        height: 40,
-        padding: 8,
-        backgroundColor: '#FFF',
-        flexGrow: 1,
+        height: 36,
+        padding: 4,
+        marginRight: 5,
+        flex: 4,
+        fontSize: 16,
+        borderWidth: 1,
+        borderColor: '#48afdb',
+        borderRadius: 4,
+        color: '#48BBEC'
     },
-    submit: {
-        height: 40,
-    }
+    button: {
+        height: 36,
+        flex: 2,
+        flexDirection: 'row',
+        backgroundColor: '#48afdb',
+        justifyContent: 'center',
+        borderRadius: 4,
+    },
+    btnText: {
+        fontSize: 18,
+        color: '#fff',
+        marginTop: 6,
+    },
 });

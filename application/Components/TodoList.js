@@ -13,19 +13,16 @@ export default class TodoList extends Component {
     constructor(props){
         super(props);
 
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-            dataSource: ds.cloneWithRows(props.todos),
+            ds: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
         };
     }
 
     render() {
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
         return (
             <ListView
                 style={styles.container}
-                dataSource={ds.cloneWithRows(this.props.todos)}
+                dataSource={this.state.ds.cloneWithRows(this.props.todos)}
                 renderRow={(data) => <Row data={data} />}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
