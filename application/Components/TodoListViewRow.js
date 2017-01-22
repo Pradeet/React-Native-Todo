@@ -5,13 +5,14 @@ export default class TodoListViewRow extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log('YoYo ----- ', this.props.data.todo);
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>
-                    {this.props.data}
+                    {this.props.data.todo}
                 </Text>
             </View>
         )

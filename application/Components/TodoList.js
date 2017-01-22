@@ -23,7 +23,7 @@ export default class TodoList extends Component {
             <ListView
                 style={styles.container}
                 dataSource={this.state.ds.cloneWithRows(this.props.todos)}
-                renderRow={(data) => <Row data={data} />}
+                renderRow={(data) => <Row data={data.text} />}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         );

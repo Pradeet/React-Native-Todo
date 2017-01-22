@@ -14,14 +14,13 @@ export default class TodoInput extends Component {
 
     onSubmit() {
         let text = this.state.text;
-        if (text === '') {
-            return
+        if (text !== '') {
+            this.setState({
+                text: '',
+            }, () => {
+                this.props.onChange(text);
+            })
         }
-        this.setState({
-            text: '',
-        }, () => {
-            this.props.onChange(text);
-        })
     }
 
     render() {
