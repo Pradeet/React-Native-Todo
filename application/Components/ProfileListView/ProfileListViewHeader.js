@@ -5,10 +5,15 @@ export default class ProfileListViewHeader extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            text: ''
+        }
     }
 
     handleSearchBar = (text) => {
-        console.log(text);
+        this.setState({
+            text: text,
+        });
         this.props.onChange(text)
     };
 
@@ -16,10 +21,10 @@ export default class ProfileListViewHeader extends React.Component {
         return (
             <View style={styles.container}>
                 <TextInput
+                    value={this.state.text}
                     style={styles.input}
                     placeholder="Search..."
-                    onChangeText={(text) => this.handleSearchBar(text)}
-                />
+                    onChangeText={(text) => this.handleSearchBar(text)} />
             </View>
         )
     }
