@@ -31,7 +31,6 @@ export default class TodoActivity extends Component {
 
     componentDidMount() {
         this.todoRef.on("child_added", (snap) => {
-            console.log('In Child_added ------', snap.val());
             this.setState({
                 todos: this.state.todos.concat([{
                     id: snap.key,
@@ -41,7 +40,6 @@ export default class TodoActivity extends Component {
         });
 
         this.todoRef.on("child_removed", (snap) => {
-            console.log(snap);
             this.setState({
                 todos: this.state.todos.filter((x => {
                     return (x.id !== snap.key)
@@ -51,13 +49,11 @@ export default class TodoActivity extends Component {
     }
 
     handleTodoInsert = (value) => {
-        console.log('My Log ----', value);
         if (value !== '') {
             this.todoRef.push({
                 todo: value,
             })
         }
-        console.log('My Log ----', value);
     };
 
     handleTodoRemove = (todo) => {
@@ -73,7 +69,7 @@ export default class TodoActivity extends Component {
                     </Text>
                 </View>
                 <TodoInput onChange={this.handleTodoInsert}/>
-                <TodoList todos={this.state.todos}/>
+                <TodoList todos={this.state.todos} handleTodoDelete={this.handleTodoRemove}/>
             </View>
         );
     }

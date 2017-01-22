@@ -1,11 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet, Animated} from 'react-native';
+import { View, Text, StyleSheet, Animated, Image, TouchableHighlight} from 'react-native';
 
 export default class TodoListViewRow extends React.Component {
 
     constructor(props) {
         super(props);
-        // console.log('YoYo ----- ', this.props.data.todo);
 
         this.state = {
             opacity: new Animated.Value(0)
@@ -19,12 +18,21 @@ export default class TodoListViewRow extends React.Component {
         }).start();
     }
 
+    handleTodoDelete = () => {
+        this.props.handleTodoDelete(this.props.data);
+    };
+
     render() {
         return (
             <Animated.View style={[styles.container, {opacity: this.state.opacity}]}>
-                <Text style={styles.text}>
-                    {this.props.data.todo}
+                <Text style={styles.text} numberOfLines={1}>
+                    {this.props.data.text.todo}
                 </Text>
+                <TouchableHighlight onPress={this.handleTodoDelete}>
+                    <Image
+                        style={styles.deleteIcon}
+                        source={require('../assets/images/delete_icon.png')} />
+                </TouchableHighlight>
             </Animated.View>
         )
     }
@@ -40,5 +48,12 @@ const styles = StyleSheet.create({
     text: {
         marginLeft: 12,
         fontSize: 16,
+        flex: 1,
     },
+    deleteIcon: {
+        height: 20,
+        width: 20,
+        marginRight: 12,
+        flexShrink: 0,
+    }
 });

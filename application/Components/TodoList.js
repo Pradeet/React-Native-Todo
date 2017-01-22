@@ -18,12 +18,16 @@ export default class TodoList extends Component {
         };
     }
 
+    handleTodoDelete = (todo) => {
+        this.props.handleTodoDelete(todo);
+    };
+
     render() {
         return (
             <ListView
                 style={styles.container}
                 dataSource={this.state.ds.cloneWithRows(this.props.todos)}
-                renderRow={(data) => <Row data={data.text} />}
+                renderRow={(data) => <Row data={data} handleTodoDelete={this.handleTodoDelete}/>}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         );
@@ -38,6 +42,8 @@ const styles = StyleSheet.create({
     },
     separator: {
         flex: 1,
+        marginRight: 12,
+        marginLeft: 12,
         height: StyleSheet.hairlineWidth,
         backgroundColor: '#8E8E8E',
     },
