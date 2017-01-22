@@ -22,10 +22,7 @@ export default class TodoActivity extends Component {
                 }))
             }
         }).catch((error) => {
-            console.log(error);
-            this.state = {
-                todos: [],
-            }
+            console.log('Error ------- ', error)
         });
         this.state = {
             todos: [],

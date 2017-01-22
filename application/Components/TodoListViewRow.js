@@ -1,20 +1,31 @@
 import React from 'react'
-import { View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet, Animated} from 'react-native';
 
 export default class TodoListViewRow extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log('YoYo ----- ', this.props.data.todo);
+        // console.log('YoYo ----- ', this.props.data.todo);
+
+        this.state = {
+            opacity: new Animated.Value(0)
+        }
+    }
+
+    componentDidMount() {
+        Animated.timing(this.state.opacity, {
+            toValue: 1,
+            duration: 250,
+        }).start();
     }
 
     render() {
         return (
-            <View style={styles.container}>
+            <Animated.View style={[styles.container, {opacity: this.state.opacity}]}>
                 <Text style={styles.text}>
                     {this.props.data.todo}
                 </Text>
-            </View>
+            </Animated.View>
         )
     }
 }
