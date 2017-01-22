@@ -9,11 +9,27 @@ export default class ProfileListView extends Component {
     constructor(props) {
         super(props);
 
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
         this.state = {
-            dataSource: ds.cloneWithRows(data),
+            dataSource: this.ds.cloneWithRows(data),
+            searchText: '',
         };
     }
+
+    handleSearchBar = (text) => {
+        let re = new RegExp("\w*" + text.toLowerCase() + "\w*");
+        let filteredData = data.filter((entry) => {
+            if(entry.name.first.match(re) || entry.name.last.match(re)) {
+                return entry;
+            }
+        });
+
+        this.setState({
+            searchText: text,
+            dataSource: this.ds.cloneWithRows(filteredData),
+        })
+    };
 
     render() {
         return (
@@ -22,7 +38,7 @@ export default class ProfileListView extends Component {
                 dataSource={this.state.dataSource}
                 renderRow={(data) => <Row {...data} />}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
-                renderHeader={() => <Header />}
+                renderHeader={() => <Header onChange={this.handleSearchBar}/>}
             />
         );
     }

@@ -7,13 +7,18 @@ export default class ProfileListViewHeader extends React.Component {
         super(props);
     }
 
+    handleSearchBar = (text) => {
+        console.log(text);
+        this.props.onChange(text)
+    };
+
     render() {
         return (
             <View style={styles.container}>
                 <TextInput
                     style={styles.input}
                     placeholder="Search..."
-                    onChangeText={(text) => console.log('searching for ', text)}
+                    onChangeText={(text) => this.handleSearchBar(text)}
                 />
             </View>
         )
