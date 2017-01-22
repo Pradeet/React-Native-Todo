@@ -20,7 +20,8 @@ export default class ProfileListView extends Component {
     handleSearchBar = (text) => {
         let re = new RegExp("\w*" + text.toLowerCase() + "\w*");
         let filteredData = data.filter((entry) => {
-            if(entry.name.first.match(re) || entry.name.last.match(re)) {
+            let fullname = entry.name.first + ' ' + entry.name.last;
+            if(entry.name.first.match(re) || entry.name.last.match(re) || fullname.match(re)) {
                 return entry;
             }
         });
