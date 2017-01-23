@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import TodoActivity from './application/Components/TodoActivity';
+import TodoActivity from './application/Components/TodoApp/TodoActivity';
 import ProfileListView from './application/Components/ProfileListView/ProfileListView';
 import * as firebase from 'firebase';
 
@@ -27,8 +27,9 @@ export default class Todo extends Component {
 
   render() {
     return (
-      <TodoActivity />
+        // <TodoActivity />
         // <ProfileListView />
+        <Navigator />
     )
   }
 }

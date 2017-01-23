@@ -31,7 +31,7 @@ export default class TodoListViewRow extends React.Component {
                 <TouchableHighlight onPress={this.handleTodoDelete}>
                     <Image
                         style={styles.deleteIcon}
-                        source={require('../assets/images/delete_icon.png')} />
+                        source={require('../../assets/images/delete_icon.png')} />
                 </TouchableHighlight>
             </Animated.View>
         )
