@@ -9,6 +9,7 @@ import { AppRegistry } from 'react-native';
 import TodoActivity from './application/Components/TodoApp/TodoActivity';
 import ProfileListView from './application/Components/ProfileListView/ProfileListView';
 import * as firebase from 'firebase';
+import Navigator from './application/Components/Navigator';
 
 export default class Todo extends Component {
 
