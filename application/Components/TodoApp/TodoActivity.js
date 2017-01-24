@@ -7,6 +7,7 @@ import {
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 import * as firebase from "firebase";
+import ToolBar from './helpers/ToolBar'
 
 export default class TodoActivity extends Component {
 
@@ -63,12 +64,8 @@ export default class TodoActivity extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.titleView}>
-                    <Text style={styles.titleText}>
-                        Todo List
-                    </Text>
-                </View>
-                <TodoInput onChange={this.handleTodoInsert}/>
+                <ToolBar title="Todo List" disableBackPress={true}/>
+                <TodoInput onChange={(value) => this.handleTodoInsert}/>
                 <TodoList todos={this.state.todos} handleTodoDelete={this.handleTodoRemove}/>
             </View>
         );
@@ -78,18 +75,5 @@ export default class TodoActivity extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    titleView: {
-        backgroundColor: "#48afdb",
-        paddingTop: 30,
-        paddingBottom: 10,
-        flexDirection: "row"
-    },
-    titleText: {
-        color: "#fff",
-        textAlign: "center",
-        fontWeight: "bold",
-        flex: 1,
-        fontSize: 20,
     },
 });

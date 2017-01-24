@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Animated, Image, TouchableHighlight} from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 export default class TodoListViewRow extends React.Component {
 
@@ -25,9 +26,11 @@ export default class TodoListViewRow extends React.Component {
     render() {
         return (
             <Animated.View style={[styles.container, {opacity: this.state.opacity}]}>
-                <Text style={styles.text} numberOfLines={1}>
-                    {this.props.data.text.todo}
-                </Text>
+                <View style={styles.textContainer}>
+                    <Text style={styles.text} numberOfLines={1} onPress={() => Actions.todoAppEdit(this.props.data)}>
+                        {this.props.data.text.todo}
+                    </Text>
+                </View>
                 <TouchableHighlight onPress={this.handleTodoDelete}>
                     <Image
                         style={styles.deleteIcon}
@@ -45,8 +48,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    text: {
+    textContainer: {
         marginLeft: 12,
+        flex: 1,
+    },
+    text: {
         fontSize: 16,
         flex: 1,
     },

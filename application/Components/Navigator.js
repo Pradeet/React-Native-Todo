@@ -6,6 +6,7 @@ import {
 import {Router, Scene} from 'react-native-router-flux';
 
 import TodoActivity from './TodoApp/TodoActivity';
+import TodoEditActivity from './TodoApp/TodoEditActivity';
 import ProfileListView from './ProfileListView/ProfileListView';
 
 export default class Navigator extends React.Component {
@@ -16,30 +17,18 @@ export default class Navigator extends React.Component {
 
     render() {
         return (
-            <Router showNavigationBar={false}>
+            <Router>
                 <Scene key="root">
-
                     <Scene
-                        key="tabbar"
-                        tabs={true}
-                        tabBarStyle={styles.tabBarStyle}>
-
-                        <Scene key="todo_tab" title="Todo App" icon={TabIcon}>
-                            <Scene
-                                key="todo_scene"
-                                component={TodoActivity}
-                                title='Scarlet'
-                                initial={true} />
-                        </Scene>
-
-                        <Scene key="profile_tab" title="Profiles" icon={TabIcon}>
-                            <Scene
-                                key="profile_scene"
-                                component={ProfileListView}
-                                title='Grey'
-                                initial={true} />
-                        </Scene>
-                    </Scene>
+                        key='todoApp'
+                        component={TodoActivity}
+                        title="Todo Avtivity"
+                        initial
+                        hideNavBar />
+                    <Scene
+                        key="todoAppEdit"
+                        component={TodoEditActivity}
+                        title="Edit Todo"/>
                 </Scene>
             </Router>
         )

@@ -22,12 +22,18 @@ export default class TodoList extends Component {
         this.props.handleTodoDelete(todo);
     };
 
+    renderRow = (data) => {
+        return (
+            <Row data={data} handleTodoDelete={this.handleTodoDelete}/>
+        )
+    };
+
     render() {
         return (
             <ListView
                 style={styles.container}
                 dataSource={this.state.ds.cloneWithRows(this.props.todos)}
-                renderRow={(data) => <Row data={data} handleTodoDelete={this.handleTodoDelete}/>}
+                renderRow={(data) => this.renderRow(data)}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         );

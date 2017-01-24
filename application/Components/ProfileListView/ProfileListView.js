@@ -32,12 +32,18 @@ export default class ProfileListView extends Component {
         })
     };
 
+    renderRow(data) {
+        return (
+            <Row {...data} />
+        )
+    }
+
     render() {
         return (
             <ListView
                 style={styles.container}
                 dataSource={this.state.dataSource}
-                renderRow={(data) => <Row {...data} />}
+                renderRow={(data) => renderRow(data)}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                 renderHeader={() => <Header onChange={this.handleSearchBar}/>}
             />
