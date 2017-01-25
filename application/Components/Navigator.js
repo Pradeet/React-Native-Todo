@@ -7,7 +7,7 @@ import {Router, Scene} from 'react-native-router-flux';
 
 import TodoActivity from './TodoApp/TodoActivity';
 import TodoEditActivity from './TodoApp/TodoEditActivity';
-import ProfileListView from './ProfileListView/ProfileListView';
+// import ProfileListView from './ProfileListView/ProfileListView';
 
 export default class Navigator extends React.Component {
 
