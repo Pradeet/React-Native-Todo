@@ -22,7 +22,7 @@ export default class Navigator extends React.Component {
                     <Scene
                         key='todoApp'
                         component={TodoActivity}
-                        title="Todo Avtivity"
+                        title="Todo Activity"
                         initial
                         hideNavBar />
                     <Scene

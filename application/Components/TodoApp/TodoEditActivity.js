@@ -17,6 +17,7 @@ export default class TodoEditActivity extends React.Component {
     }
 
     handleSubmit = () => {
+        console.log('Submitting edited todo');
         if (this.state.isEdited) {
             this.props.handleTodoEdit({
                 text: this.state.text.todo,
@@ -33,7 +34,7 @@ export default class TodoEditActivity extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <ToolBar title="Todo List" onBackPress={this.handleBackPress}/>
+                <ToolBar title="Todo List" onBackPress={this.handleBackPress} onSubmitButton={this.handleSubmit}/>
                 <Text>{this.state.text}</Text>
                 <Text>{this.state.date}</Text>
                 <Text>{this.state.label}</Text>

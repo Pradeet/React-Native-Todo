@@ -6,21 +6,31 @@ export default class Toolbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            disableBackPress: !(this.props.hasOwnProperty('onBackPress')),
+            disableBackPress: !(props.hasOwnProperty('onBackPress')),
+            disableSubmitButton: !(props.hasOwnProperty('onSubmitButton')),
+            submitText: (props.hasOwnProperty('submitText')) ? props.submitText : 'save',
         }
     }
-
-    handleBackPress = () => {
-        this.props.onBackPress();
-    };
 
     renderBackPress = () => {
         if(!this.state.disableBackPress) {
             return(
-                <TouchableHighlight onPress={this.handleBackPress}>
+                <TouchableHighlight onPress={this.props.onBackPress}>
                     <Image
                         style={styles.backButton}
                         source={require('../../../assets/images/navigation_back_arrow.png')} />
+                </TouchableHighlight>
+            )
+        }
+    };
+
+    renderSubmit = () => {
+        if(!this.state.disableSubmitButton) {
+            return(
+                <TouchableHighlight onPress={this.props.onSubmitButton}>
+                    <Text style={styles.submitText}>
+                        {this.state.submitText}
+                    </Text>
                 </TouchableHighlight>
             )
         }
@@ -35,6 +45,7 @@ export default class Toolbar extends React.Component {
                         {this.props.title}
                     </Text>
                 </View>
+                {this.renderSubmit()}
             </View>
         )
     }
@@ -66,4 +77,13 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 20,
     },
+    submitButton: {
+
+    },
+    submitText: {
+        margin: 6,
+        marginRight: 12,
+        color: '#fff',
+        fontSize: 16,
+    }
 });
