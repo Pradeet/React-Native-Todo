@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import ToolBar from './helpers/ToolBar'
-
 import {Actions} from 'react-native-router-flux';
+
+import ToolBar from '../helpers/ToolBar/ToolBar.native';
+
+import styles from './TodoEditActivity.style'
 
 export default class TodoEditActivity extends React.Component {
 
@@ -42,10 +44,3 @@ export default class TodoEditActivity extends React.Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-    },
-});

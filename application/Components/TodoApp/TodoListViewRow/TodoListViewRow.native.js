@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Text, StyleSheet, Animated, Image, TouchableHighlight} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
+import styles from './TodoListViewRow.style'
+
 export default class TodoListViewRow extends React.Component {
 
     constructor(props) {
@@ -34,32 +36,9 @@ export default class TodoListViewRow extends React.Component {
                 <TouchableHighlight onPress={this.handleTodoDelete}>
                     <Image
                         style={styles.deleteIcon}
-                        source={require('../../assets/images/delete_icon.png')} />
+                        source={require('../../../assets/images/delete_icon.png')} />
                 </TouchableHighlight>
             </Animated.View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 12,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    textContainer: {
-        marginLeft: 12,
-        flex: 1,
-    },
-    text: {
-        fontSize: 16,
-        flex: 1,
-    },
-    deleteIcon: {
-        height: 20,
-        width: 20,
-        marginRight: 12,
-        flexShrink: 0,
-    }
-});

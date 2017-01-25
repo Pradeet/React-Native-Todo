@@ -1,13 +1,10 @@
 import React, {Component} from "react";
-import {
-    StyleSheet,
-    Text,
-    View
-} from "react-native";
-import TodoInput from "./TodoInput";
-import TodoList from "./TodoList";
+import {StyleSheet, Text, View} from "react-native";
 import * as firebase from "firebase";
-import ToolBar from './helpers/ToolBar'
+
+import TodoInput from "./TodoInput/TodoInput.native";
+import TodoList from "./TodoList/TodoList.native";
+import ToolBar from './helpers/ToolBar/ToolBar.native'
 
 export default class TodoActivity extends Component {
 

@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
+import {StyleSheet, Text, View, ListView} from 'react-native';
 
-import {
-    StyleSheet,
-    Text,
-    View,
-    ListView
-} from 'react-native';
-import {default as Row} from './TodoListViewRow';
+import Row from '../TodoListViewRow/TodoListViewRow.native';
+
+import styles from './TodoList.style';
 
 export default class TodoList extends Component {
 
@@ -40,18 +37,3 @@ export default class TodoList extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        height: 100,
-        flexGrow: 1,
-        backgroundColor: 'white',
-    },
-    separator: {
-        flex: 1,
-        marginRight: 12,
-        marginLeft: 12,
-        height: StyleSheet.hairlineWidth,
-        backgroundColor: '#8E8E8E',
-    },
-});
