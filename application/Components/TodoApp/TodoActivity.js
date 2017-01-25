@@ -15,16 +15,6 @@ export default class TodoActivity extends Component {
         super(props);
 
         this.todoRef = firebase.database().ref().child("todos");
-        this.todoRef.once('value').then((snap) => {
-            this.state = {
-                todos: Object.keys(snap).map((data) => ({
-                    id: data.key,
-                    text: data.val()
-                }))
-            }
-        }).catch((error) => {
-            console.log('Error ------- ', error)
-        });
         this.state = {
             todos: [],
         }
@@ -32,15 +22,19 @@ export default class TodoActivity extends Component {
 
     componentDidMount() {
         this.todoRef.on("child_added", (snap) => {
+            console.log('Called child_added');
             this.setState({
                 todos: this.state.todos.concat([{
                     id: snap.key,
-                    text: snap.val(),
+                    ...snap.val(),
                 }])
+            }, () => {
+                console.log('All todos ----- ', this.state.todos)
             })
         });
 
         this.todoRef.on("child_removed", (snap) => {
+            console.log('Called child_removed');
             this.setState({
                 todos: this.state.todos.filter((x => {
                     return (x.id !== snap.key)
@@ -52,7 +46,7 @@ export default class TodoActivity extends Component {
     handleTodoInsert = (value) => {
         if (value !== '') {
             this.todoRef.push({
-                todo: value,
+                ...value,
             })
         }
     };

@@ -22,9 +22,10 @@ export default class TodoList extends Component {
         this.props.handleTodoDelete(todo);
     };
 
-    renderRow = (data) => {
+    renderRow = (todo) => {
+        console.log('Printing row data ----- ', todo);
         return (
-            <Row data={data} handleTodoDelete={this.handleTodoDelete}/>
+            <Row todo={todo} handleTodoDelete={this.handleTodoDelete}/>
         )
     };
 
@@ -33,7 +34,7 @@ export default class TodoList extends Component {
             <ListView
                 style={styles.container}
                 dataSource={this.state.ds.cloneWithRows(this.props.todos)}
-                renderRow={(data) => this.renderRow(data)}
+                renderRow={(todo) => this.renderRow(todo)}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
             />
         );

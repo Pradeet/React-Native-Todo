@@ -14,11 +14,15 @@ export default class TodoInput extends Component {
 
     onSubmit() {
         let text = this.state.text;
+        let obj = {
+            title: text,
+            label: 'Shopping',
+        };
         if (text !== '') {
             this.setState({
                 text: '',
             }, () => {
-                this.props.onChange(text);
+                this.props.onChange(obj);
             })
         }
     }
