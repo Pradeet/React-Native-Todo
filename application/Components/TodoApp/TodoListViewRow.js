@@ -20,7 +20,7 @@ export default class TodoListViewRow extends React.Component {
     }
 
     handleTodoDelete = () => {
-        this.props.handleTodoDelete(this.props.data);
+        this.props.handleTodoDelete(this.props.todo);
     };
 
     render() {
