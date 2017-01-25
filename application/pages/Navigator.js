@@ -5,9 +5,8 @@ import {
 } from 'react-native';
 import {Router, Scene} from 'react-native-router-flux';
 
-import TodoActivity from './TodoApp/TodoActivity';
-import TodoEditActivity from './TodoApp/TodoEditActivity/TodoEditActivity.native';
-// import ProfileListView from './ProfileListView/ProfileListView';
+import TodoHomePage from '../pages/homePage/components/TodoHomePage';
+import TodoDetailsPage from '../pages/detailsPage/components/TodoHomePage';
 
 export default class Navigator extends React.Component {
 
@@ -21,13 +20,13 @@ export default class Navigator extends React.Component {
                 <Scene key="root">
                     <Scene
                         key='todoApp'
-                        component={TodoActivity}
+                        component={TodoHomePage}
                         title="Todo Activity"
                         initial
                         hideNavBar />
                     <Scene
                         key="todoAppEdit"
-                        component={TodoEditActivity}
+                        component={TodoDetailsPage}
                         title="Edit Todo"/>
                 </Scene>
             </Router>

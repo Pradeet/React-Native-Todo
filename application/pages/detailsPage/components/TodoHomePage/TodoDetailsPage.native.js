@@ -2,11 +2,11 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
-import ToolBar from '../helpers/ToolBar/ToolBar.native';
+import ToolBar from '../../../../helpers/ToolBar';
 
-import styles from './TodoEditActivity.style'
+import styles from './TodoDetailsPage.style'
 
-export default class TodoEditActivity extends React.Component {
+export default class TodoDetailsPage extends React.Component {
 
     constructor(props) {
         super(props);

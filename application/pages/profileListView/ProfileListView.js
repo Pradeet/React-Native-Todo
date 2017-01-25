@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { View, ListView, StyleSheet, Text } from 'react-native';
 import {default as Row} from './ProfileListViewRow'
-import data from '../../Data/demoData'
+import data from '../../data/demoData'
 import {default as Header} from './ProfileListViewHeader'
 
 export default class ProfileListView extends Component {
@@ -43,7 +43,7 @@ export default class ProfileListView extends Component {
             <ListView
                 style={styles.container}
                 dataSource={this.state.dataSource}
-                renderRow={(data) => renderRow(data)}
+                renderRow={(data) => this.renderRow(data)}
                 renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
                 renderHeader={() => <Header onChange={this.handleSearchBar}/>}
             />

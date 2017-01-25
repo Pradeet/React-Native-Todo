@@ -2,11 +2,13 @@ import React, {Component} from "react";
 import {StyleSheet, Text, View} from "react-native";
 import * as firebase from "firebase";
 
-import TodoInput from "./TodoInput/TodoInput.native";
-import TodoList from "./TodoList/TodoList.native";
-import ToolBar from './helpers/ToolBar/ToolBar.native'
+import TodoInput from "../TodoInput";
+import TodoList from "../TodoList";
+import ToolBar from '../../../../helpers/ToolBar'
 
-export default class TodoActivity extends Component {
+import styles from './TodoHomePage.style'
+
+export default class TodoHomePage extends Component {
 
     constructor(props) {
         super(props);
@@ -62,9 +64,3 @@ export default class TodoActivity extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-});

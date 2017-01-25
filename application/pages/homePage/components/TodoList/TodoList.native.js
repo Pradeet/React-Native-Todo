@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, ListView} from 'react-native';
 
-import Row from '../TodoListViewRow/TodoListViewRow.native';
+import Row from '../TodoListRow/TodoListRow.native';
 
 import styles from './TodoList.style';
 

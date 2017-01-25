@@ -19,7 +19,7 @@ export default class Toolbar extends React.Component {
                 <TouchableHighlight onPress={this.props.onBackPress}>
                     <Image
                         style={styles.backButton}
-                        source={require('../../../../assets/images/navigation_back_arrow.png')} />
+                        source={require('../../assets/images/navigation_back_arrow.png')} />
                 </TouchableHighlight>
             )
         }

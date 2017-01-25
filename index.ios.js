@@ -1,15 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import TodoActivity from './application/Components/TodoApp/TodoActivity';
-import ProfileListView from './application/Components/ProfileListView/ProfileListView';
 import * as firebase from 'firebase';
-import Navigator from './application/Components/Navigator';
+
+import TodoActivity from './application/pages/homePage/components/TodoHomePage';
+import ProfileListView from './application/pages/profileListView/ProfileListView';
+import Navigator from './application/pages/Navigator';
 
 export default class Todo extends Component {
 
@@ -29,8 +24,8 @@ export default class Todo extends Component {
   render() {
     return (
         // <TodoActivity />
-        // <ProfileListView />
-        <Navigator />
+        <ProfileListView />
+        // <Navigator />
     )
   }
 }
