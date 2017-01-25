@@ -65,7 +65,7 @@ export default class TodoActivity extends Component {
         return (
             <View style={styles.container}>
                 <ToolBar title="Todo List" disableBackPress={true}/>
-                <TodoInput onChange={(value) => this.handleTodoInsert}/>
+                <TodoInput onChange={this.handleTodoInsert}/>
                 <TodoList todos={this.state.todos} handleTodoDelete={this.handleTodoRemove}/>
             </View>
         );
