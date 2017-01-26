@@ -5,42 +5,43 @@ import * as firebase from "firebase";
 import TodoInput from "../TodoInput";
 import TodoList from "../TodoList";
 import ToolBar from '../../../../helpers/ToolBar'
+import demoTodos from '../../../../data/demoTodos'
 
 import styles from './TodoHomePage.style'
 
-export default class TodoHomePage extends Component {
+export default class TodoActivity extends Component {
 
     constructor(props) {
         super(props);
 
         this.todoRef = firebase.database().ref().child("todos");
         this.state = {
-            todos: [],
+            todos: demoTodos,
         }
     }
 
-    componentDidMount() {
-        this.todoRef.on("child_added", (snap) => {
-            console.log('Called child_added');
-            this.setState({
-                todos: this.state.todos.concat([{
-                    id: snap.key,
-                    ...snap.val(),
-                }])
-            }, () => {
-                console.log('All todos ----- ', this.state.todos)
-            })
-        });
-
-        this.todoRef.on("child_removed", (snap) => {
-            console.log('Called child_removed');
-            this.setState({
-                todos: this.state.todos.filter((x => {
-                    return (x.id !== snap.key)
-                }))
-            })
-        });
-    }
+    // componentDidMount() {
+    //     this.todoRef.on("child_added", (snap) => {
+    //         console.log('Called child_added');
+    //         this.setState({
+    //             todos: this.state.todos.concat([{
+    //                 id: snap.key,
+    //                 ...snap.val(),
+    //             }])
+    //         }, () => {
+    //             console.log('All todos ----- ', this.state.todos)
+    //         })
+    //     });
+    //
+    //     this.todoRef.on("child_removed", (snap) => {
+    //         console.log('Called child_removed');
+    //         this.setState({
+    //             todos: this.state.todos.filter((x => {
+    //                 return (x.id !== snap.key)
+    //             }))
+    //         })
+    //     });
+    // }
 
     handleTodoInsert = (value) => {
         if (value !== '') {
