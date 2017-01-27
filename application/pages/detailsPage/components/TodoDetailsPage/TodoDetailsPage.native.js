@@ -2,13 +2,11 @@ import React from 'react';
 import {View, Text, StyleSheet, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import DateTimePicker from 'react-native-modal-datetime-picker'
-// import FloatLabelTextInput from 'react-native-floating-label-text-input';
-// import ListViewSelect from 'react-native-list-view-select';
 
 import ToolBar from '../../../../helpers/ToolBar';
 import Seperator from '../../../../helpers/Seperator';
-// import labels from '../../../../data/demoLabels';
 import TextInput from '../../../../helpers/TextInput';
+import Touchable from '../../../../helpers/Touchable';
 
 import styles from './TodoDetailsPage.style';
 
@@ -19,7 +17,7 @@ export default class TodoDetailsPage extends React.Component {
         this.isEdited= false;
         let todo = {
             id: '-KbKf6pHx3nzdK_0gN1Q',
-            title: "Break baseball",
+            title: "This is nothing",
             label: "Shopping",
             date: new Date("2017-02-27T11:14:13.000Z"),
         };
@@ -89,19 +87,23 @@ export default class TodoDetailsPage extends React.Component {
 
     renderTitleInput = () => {
         return (
-            <TextInput
-                placeholder={'Title'}
-                value={this.state.title}
-                onChangeText={this.setTitle}/>
+            <View style={styles.titleInputContainer}>
+                <TextInput
+                    placeholder={'Title'}
+                    style={styles.titleInput}
+                    value={this.state.title}
+                    onChangeText={this.setTitle}/>
+            </View>
         )
     };
 
     renderLabelInput = () => {
         return (
-            <TextInput
-                placeholder={'Label'}
-                value={this.state.label}
-                onChangeText={this.setLabel}/>
+            <Touchable style={styles.labelInputContainer}>
+                <View>
+
+                </View>
+            </Touchable>
         )
     };
 
