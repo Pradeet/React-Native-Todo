@@ -17,12 +17,17 @@ export default class TodoDetailsPage extends React.Component {
     constructor(props) {
         super(props);
         this.isEdited= false;
-        console.log(typeof props.handleTodoEdit);
+        let todo = {
+            id: '-KbKf6pHx3nzdK_0gN1Q',
+            title: "Break baseball",
+            label: "Shopping",
+            date: new Date("2017-02-27T11:14:13.000Z"),
+        };
         this.state = {
-            id: props.todo.id,
-            title: props.todo.title,
-            date: (props.todo.hasOwnProperty('date')) ? new Date(props.todo.date) : new Date(),
-            label: (props.todo.hasOwnProperty('label')) ? props.todo.label : 'Personal',
+            id: todo.id,
+            title: todo.title,
+            date: (todo.hasOwnProperty('date')) ? new Date(todo.date) : new Date(),
+            label: (todo.hasOwnProperty('label')) ? todo.label : 'Personal',
             isLabelListVisible: false,
         }
     }

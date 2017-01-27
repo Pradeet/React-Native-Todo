@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import TodoActivity from './application/pages/homePage/components/TodoHomePage';
 import ProfileListView from './application/pages/profileListView/ProfileListView';
 import Navigator from './application/pages/Navigator';
+import TodoDetailsPage from './application/pages/detailsPage/components/TodoDetailsPage';
 
 export default class Todo extends Component {
 
@@ -25,7 +26,8 @@ export default class Todo extends Component {
     return (
         // <TodoActivity />
         // <ProfileListView />
-        <Navigator />
+        // <Navigator />
+        <TodoDetailsPage />
     )
   }
 }
