@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, Button, TouchableHighlight, Text} from 'react-native';
+import {StyleSheet, View, Button, TouchableHighlight, Text} from 'react-native';
+
+import TextInput from '../../../../helpers/TextInput';
+import Touchable from '../../../../helpers/Touchable';
 
 import styles from './TodoInput.style'
+
 
 export default class TodoInput extends Component {
 
@@ -37,12 +41,12 @@ export default class TodoInput extends Component {
                     style={styles.input}
                     placeholder="Type here to Add Todo"
                     onChangeText={(text) => this.setState({text})} />
-                <TouchableHighlight
+                <Touchable
                     style={styles.button}
-                    underlayColor='#DDD'
+                    underlayColor='#fff'
                     onPress={() => this.onSubmit()}>
                     <Text style={styles.btnText}>Add!</Text>
-                </TouchableHighlight>
+                </Touchable>
             </View>
         )
     }

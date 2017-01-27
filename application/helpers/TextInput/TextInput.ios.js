@@ -23,7 +23,8 @@ export default class MyTextInput extends React.Component {
             <TextInput
                 style={styles.textInput}
                 {...this.props}
-                value={this.state.text} />
+                value={this.state.text}
+            />
         )
     }
 }
