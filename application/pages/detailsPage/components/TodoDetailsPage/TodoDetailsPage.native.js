@@ -78,8 +78,11 @@ export default class TodoDetailsPage extends React.Component {
                     {this.renderTitleInput()}
                     <Seperator />
                     {this.renderLabelInput()}
+                    <Seperator />
                     <View style={styles.bigSeperator} />
+                    <Seperator />
                     {this.renderDatePicker()}
+                    <Seperator />
                 </ScrollView>
             </View>
         )
@@ -105,16 +108,19 @@ export default class TodoDetailsPage extends React.Component {
                     source={require('../../../../assets/images/document_icon.png')} />
                 <Text style={styles.labelInputHint}>Project</Text>
                 <Text style={styles.labelInputText}>{this.todo.label}</Text>
-                <Text style={styles.labelInputArrow}>{' >'}</Text>
+                <Text style={styles.labelInputArrow}>{'>'}</Text>
             </Touchable>
         )
     };
 
     renderDatePicker = () => {
         return (
-            <View style={styles.datePicker}>
-                <Touchable onPress={this._showDateTimePicker}>
-                    <Text>{this.state.date.toDateString()}</Text>
+            <View style={styles.datePickerContainer}>
+                <Touchable style={styles.datePicker} onPress={this._showDateTimePicker}>
+                    <Text style={styles.dateText}>{this._getDateTime(this.todo.date)}</Text>
+                    <Image
+                        style={styles.calendarIcon}
+                        source={require('../../../../assets/images/calendar.jpg')} />
                 </Touchable>
                 <DateTimePicker
                     isVisible={this.state.isDateTimePickerVisible}
@@ -122,6 +128,12 @@ export default class TodoDetailsPage extends React.Component {
                     onCancel={this._hideDateTimePicker} />
             </View>
         )
+    };
+
+    _getDateTime = (date) => {
+        let d = date.toDateString().split(' ');
+        console.log(d);
+        return d[2] + ' ' + d[1] + ' ' + date.getHours() + ':' + date.getMinutes();
     };
 
     _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });

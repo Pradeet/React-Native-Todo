@@ -4,6 +4,6 @@ export default StyleSheet.create({
     separator: {
         flex: 1,
         height: StyleSheet.hairlineWidth,
-        backgroundColor: '#eaf0f9',
+        backgroundColor: 'gainsboro',
     },
 })

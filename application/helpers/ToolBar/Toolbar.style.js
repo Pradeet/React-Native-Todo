@@ -4,9 +4,9 @@ export default StyleSheet.create({
     container: {
         flex: 0,
         flexDirection: 'row',
-        backgroundColor: '#48afdb',
+        backgroundColor: '#BF4D42',
         paddingTop: 30,
-        paddingBottom: 10,
+        paddingBottom: 8,
         alignItems: 'center',
     },
     backButton: {

@@ -1,13 +1,20 @@
 import {StyleSheet} from 'react-native';
 
 let inputBGColor = '#f7f9fc';
+let BGcolor = '#F8F8F8';
 let inputPad = 16;
+let selectViewHeight = 46;
+
+const viewContainers = {
+    paddingLeft: inputPad,
+    paddingRight: inputPad,
+};
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: '#eaf0f9',
+        backgroundColor: BGcolor,
     },
     inputArea: {
         flexDirection: 'column',
@@ -15,10 +22,9 @@ export default StyleSheet.create({
     titleInputContainer: {
         backgroundColor: inputBGColor,
         flexDirection: 'column',
-        paddingLeft: inputPad,
-        paddingRight: inputPad,
         flex: 1,
         justifyContent: 'center',
+        ...viewContainers,
     },
     titleInput: {
         height: 52,
@@ -27,11 +33,10 @@ export default StyleSheet.create({
     labelInputContainer: {
         backgroundColor: inputBGColor,
         flexDirection: 'row',
-        height: 38,
-        paddingLeft: inputPad,
-        paddingRight: inputPad,
+        height: selectViewHeight,
         alignItems: 'center',
         flex: 1,
+        ...viewContainers
     },
     labelInputIcon: {
         height: 18,
@@ -44,19 +49,33 @@ export default StyleSheet.create({
     },
     labelInputText: {
         fontSize: 11,
-        color: '#a9acb2',
+        color: '#A5A5A5',
+        paddingRight: 8,
     },
     labelInputArrow: {
         fontSize: 18,
-        color: '#a9acb2',
+        color: '#A5A5A5',
+    },
+    datePickerContainer: {
+        flex: 1,
     },
     datePicker: {
+        ...viewContainers,
+        backgroundColor: inputBGColor,
+        height: selectViewHeight,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    dateText: {
         flex: 1,
-        paddingRight: 10,
-        paddingTop: 8,
+        alignItems: 'center'
+    },
+    calendarIcon: {
+        height: 18,
+        width: 18,
     },
     bigSeperator: {
         backgroundColor: '#eaf0f9',
-        height: 20,
+        height: 24,
     }
 })
