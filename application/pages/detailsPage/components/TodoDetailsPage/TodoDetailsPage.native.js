@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
@@ -15,17 +15,17 @@ export default class TodoDetailsPage extends React.Component {
     constructor(props) {
         super(props);
         this.isEdited= false;
-        let todo = {
+        this.todo = {
             id: '-KbKf6pHx3nzdK_0gN1Q',
             title: "This is nothing",
             label: "Shopping",
             date: new Date("2017-02-27T11:14:13.000Z"),
         };
         this.state = {
-            id: todo.id,
-            title: todo.title,
-            date: (todo.hasOwnProperty('date')) ? new Date(todo.date) : new Date(),
-            label: (todo.hasOwnProperty('label')) ? todo.label : 'Personal',
+            id: this.todo.id,
+            title: this.todo.title,
+            date: (this.todo.hasOwnProperty('date')) ? new Date(this.todo.date) : new Date(),
+            label: (this.todo.hasOwnProperty('label')) ? this.todo.label : 'Personal',
             isLabelListVisible: false,
         }
     }
@@ -78,7 +78,7 @@ export default class TodoDetailsPage extends React.Component {
                     {this.renderTitleInput()}
                     <Seperator />
                     {this.renderLabelInput()}
-                    <Seperator />
+                    <View style={styles.bigSeperator} />
                     {this.renderDatePicker()}
                 </ScrollView>
             </View>
@@ -100,9 +100,12 @@ export default class TodoDetailsPage extends React.Component {
     renderLabelInput = () => {
         return (
             <Touchable style={styles.labelInputContainer}>
-                <View>
-
-                </View>
+                <Image
+                    style={styles.labelInputIcon}
+                    source={require('../../../../assets/images/document_icon.png')} />
+                <Text style={styles.labelInputHint}>Project</Text>
+                <Text style={styles.labelInputText}>{this.todo.label}</Text>
+                <Text style={styles.labelInputArrow}>{' >'}</Text>
             </Touchable>
         )
     };
@@ -110,9 +113,9 @@ export default class TodoDetailsPage extends React.Component {
     renderDatePicker = () => {
         return (
             <View style={styles.datePicker}>
-                <TouchableOpacity onPress={this._showDateTimePicker}>
+                <Touchable onPress={this._showDateTimePicker}>
                     <Text>{this.state.date.toDateString()}</Text>
-                </TouchableOpacity>
+                </Touchable>
                 <DateTimePicker
                     isVisible={this.state.isDateTimePickerVisible}
                     onConfirm={this._handleDatePicked}

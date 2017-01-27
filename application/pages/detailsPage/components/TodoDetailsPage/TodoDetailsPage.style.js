@@ -22,15 +22,41 @@ export default StyleSheet.create({
     },
     titleInput: {
         height: 52,
-        fontSize: 15,
+        fontSize: 16,
     },
     labelInputContainer: {
         backgroundColor: inputBGColor,
         flexDirection: 'row',
+        height: 38,
+        paddingLeft: inputPad,
+        paddingRight: inputPad,
+        alignItems: 'center',
+        flex: 1,
+    },
+    labelInputIcon: {
+        height: 18,
+        width: 18,
+        marginRight: inputPad,
+    },
+    labelInputHint: {
+        flex: 1,
+        fontSize: 15,
+    },
+    labelInputText: {
+        fontSize: 11,
+        color: '#a9acb2',
+    },
+    labelInputArrow: {
+        fontSize: 18,
+        color: '#a9acb2',
     },
     datePicker: {
         flex: 1,
         paddingRight: 10,
         paddingTop: 8,
+    },
+    bigSeperator: {
+        backgroundColor: '#eaf0f9',
+        height: 20,
     }
 })
