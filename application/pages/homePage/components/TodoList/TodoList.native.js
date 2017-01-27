@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, ListView} from 'react-native';
 
 import Row from '../TodoListRow/TodoListRow.native';
+import Seperator from '../../../../helpers/Seperator'
 
 import styles from './TodoList.style';
 
@@ -32,7 +33,7 @@ export default class TodoList extends Component {
                 style={styles.container}
                 dataSource={this.state.ds.cloneWithRows(this.props.todos)}
                 renderRow={(todo) => this.renderRow(todo)}
-                renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+                renderSeparator={(sectionId, rowId) => <Seperator key={rowId}/>}
             />
         );
     }

@@ -1,3 +1,3 @@
-import TodoInput from './TodoInput.native';
+import TodoInput from './TodoInput';
 
 export default TodoInput;

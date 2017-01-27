@@ -45,9 +45,14 @@ export default class TodoActivity extends Component {
 
     handleTodoInsert = (value) => {
         if (value !== '') {
+            this.setState({
+                todos: this.state.todos.concat({
+                    ...value,
+                })
+            });
             this.todoRef.push({
                 ...value,
-            })
+            });
         }
     };
 
