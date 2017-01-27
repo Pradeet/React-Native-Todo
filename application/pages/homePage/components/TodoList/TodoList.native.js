@@ -20,10 +20,14 @@ export default class TodoList extends Component {
         this.props.handleTodoDelete(todo);
     };
 
+    handleTodoEdit = (newTodo) => {
+        this.props.handleTodoEdit(newTodo);
+    };
+
     renderRow = (todo) => {
         console.log('Printing row data ----- ', todo);
         return (
-            <Row todo={todo} handleTodoDelete={this.handleTodoDelete}/>
+            <Row todo={todo} handleTodoDelete={this.handleTodoDelete} handleTodoEdit={this.handleTodoEdit}/>
         )
     };
 

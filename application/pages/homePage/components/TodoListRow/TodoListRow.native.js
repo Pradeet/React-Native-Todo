@@ -29,7 +29,7 @@ export default class TodoListViewRow extends React.Component {
         return (
             <Animated.View style={[styles.container, {opacity: this.state.opacity}]}>
                 <View style={styles.textContainer}>
-                    <Text style={styles.text} numberOfLines={1} onPress={() => Actions.todoAppEdit(this.props.todo)}>
+                    <Text style={styles.text} numberOfLines={1} onPress={() => Actions.todoAppEdit(this.props)}>
                         {this.props.todo.title}
                     </Text>
                 </View>

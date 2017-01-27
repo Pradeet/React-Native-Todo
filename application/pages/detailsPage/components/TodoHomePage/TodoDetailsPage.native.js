@@ -17,21 +17,25 @@ export default class TodoDetailsPage extends React.Component {
     constructor(props) {
         super(props);
         this.isEdited= false;
+        console.log(typeof props.handleTodoEdit);
         this.state = {
-            title: props.title,
-            date: (props.hasOwnProperty('date')) ? props.date : new Date(),
-            label: (props.hasOwnProperty('label')) ? props.label : 'Personal',
+            id: props.todo.id,
+            title: props.todo.title,
+            date: (props.todo.hasOwnProperty('date')) ? new Date(props.todo.date) : new Date(),
+            label: (props.todo.hasOwnProperty('label')) ? props.todo.label : 'Personal',
             isLabelListVisible: false,
         }
     }
 
     handleSubmit = () => {
         console.log('Submitting edited todo');
-        if (this.state.isEdited) {
+        if (this.isEdited) {
+            console.log('The data is edited');
             this.props.handleTodoEdit({
-                title: this.title,
-                date: this.date,
-                label: this.label,
+                id: this.state.id,
+                title: this.state.title,
+                date: this.state.date,
+                label: this.state.label,
             });
             Actions.pop();
         }
