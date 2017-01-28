@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 let inputBGColor = '#f7f9fc';
-let BGcolor = '#F8F8F8';
+let BGcolor = '#eaf0f9';
 let inputPad = 16;
 let selectViewHeight = 46;
 
@@ -49,7 +49,7 @@ export default StyleSheet.create({
         fontSize: 16,
     },
     labelInputText: {
-        fontSize: 11,
+        fontSize: 13,
         color: '#A5A5A5',
         paddingRight: 8,
     },
@@ -88,6 +88,18 @@ export default StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 0.5,
         borderColor: '#C9C9C9'
+    },
+    deleteButtonContainer: {
+        backgroundColor: inputBGColor,
+        flexDirection: 'row',
+        height: selectViewHeight,
+        alignItems: 'center',
+        justifyContent: 'center',
+        ...viewContainers
+    },
+    deleteText: {
+        color: 'red',
+        fontSize: 16,
     },
     bigSeperator: {
         backgroundColor: '#eaf0f9',

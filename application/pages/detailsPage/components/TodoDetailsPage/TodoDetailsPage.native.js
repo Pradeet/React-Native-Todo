@@ -19,7 +19,7 @@ export default class TodoDetailsPage extends React.Component {
         this.todo = {
             id: '-KbKf6pHx3nzdK_0gN1Q',
             title: "This is nothing",
-            label: "Shopping",
+            project: "Shopping",
             date: new Date("2017-02-27T11:14:13.000Z"),
             reminder: 'No Reminders',
             priority: 4,
@@ -28,9 +28,11 @@ export default class TodoDetailsPage extends React.Component {
             id: this.todo.id,
             title: this.todo.title,
             date: (this.todo.hasOwnProperty('date')) ? new Date(this.todo.date) : new Date(),
-            label: (this.todo.hasOwnProperty('label')) ? this.todo.label : 'Personal',
+            project: (this.todo.hasOwnProperty('project')) ? this.todo.project : 'Personal',
             reminder: (this.todo.hasOwnProperty('reminder')) ? this.todo.reminder : 'No Reminders',
             priority: (this.todo.hasOwnProperty('priority')) ? this.todo.priority : 4,
+            label: (this.todo.hasOwnProperty('labels')) ? this.todo.label : 'No Labels',
+            parent: (this.todo.hasOwnProperty('parents')) ? this.todo.parent : 'No Parents',
         }
     }
 
@@ -73,7 +75,7 @@ export default class TodoDetailsPage extends React.Component {
                 <ScrollView style={styles.inputArea}>
                     {this.renderTitleInput()}
                     <Seperator />
-                    {this.renderLabelInput()}
+                    {this.renderProjectInput()}
                     <Seperator />
                     <View style={styles.bigSeperator} />
                     <Seperator />
@@ -87,6 +89,13 @@ export default class TodoDetailsPage extends React.Component {
                     <Seperator />
                     <View style={styles.bigSeperator} />
                     <Seperator />
+                    {this.renderLabelInput()}
+                    <Seperator />
+                    {this.renderParentInput()}
+                    <Seperator />
+                    <View style={styles.bigSeperator} />
+                    <Seperator />
+                    {this.renderDeleteButton()}
                 </ScrollView>
             </View>
         )
@@ -104,14 +113,14 @@ export default class TodoDetailsPage extends React.Component {
         )
     };
 
-    renderLabelInput = () => {
+    renderProjectInput = () => {
         return (
             <Touchable style={styles.labelInputContainer}>
                 <Image
                     style={styles.labelInputIcon}
                     source={require('../../../../assets/images/document_icon.png')} />
                 <Text style={styles.labelInputHint}>Project</Text>
-                <Text style={styles.labelInputText}>{this.state.label}</Text>
+                <Text style={styles.labelInputText}>{this.state.project}</Text>
                 <Text style={styles.labelInputArrow}>{'>'}</Text>
             </Touchable>
         )
@@ -210,5 +219,39 @@ export default class TodoDetailsPage extends React.Component {
         this.setState({
             priority: priority,
         })
+    };
+
+    renderLabelInput = () => {
+        return (
+            <Touchable style={styles.labelInputContainer}>
+                <Image
+                    style={styles.labelInputIcon}
+                    source={require('../../../../assets/images/label_icon.png')} />
+                <Text style={styles.labelInputHint}>Labels</Text>
+                <Text style={styles.labelInputText}>{this.state.label}</Text>
+                <Text style={styles.labelInputArrow}>{'>'}</Text>
+            </Touchable>
+        )
+    };
+
+    renderParentInput = () => {
+        return (
+            <Touchable style={styles.labelInputContainer}>
+                <Image
+                    style={styles.labelInputIcon}
+                    source={require('../../../../assets/images/document_icon.png')} />
+                <Text style={styles.labelInputHint}>Parent</Text>
+                <Text style={styles.labelInputText}>{this.state.parent}</Text>
+                <Text style={styles.labelInputArrow}>{'>'}</Text>
+            </Touchable>
+        )
+    };
+
+    renderDeleteButton = () => {
+        return (
+            <Touchable style={styles.deleteButtonContainer}>
+                <Text style={styles.deleteText}>Delete Todo</Text>
+            </Touchable>
+        )
     }
 }
