@@ -7,6 +7,7 @@ import ToolBar from '../../../../helpers/ToolBar';
 import Seperator from '../../../../helpers/Seperator';
 import TextInput from '../../../../helpers/TextInput';
 import Touchable from '../../../../helpers/Touchable';
+import SvgFlagIcon from '../../../../helpers/SvgFlagIcon';
 
 import styles from './TodoDetailsPage.style';
 
@@ -21,14 +22,15 @@ export default class TodoDetailsPage extends React.Component {
             label: "Shopping",
             date: new Date("2017-02-27T11:14:13.000Z"),
             reminder: 'No Reminders',
+            priority: 4,
         };
         this.state = {
             id: this.todo.id,
             title: this.todo.title,
             date: (this.todo.hasOwnProperty('date')) ? new Date(this.todo.date) : new Date(),
             label: (this.todo.hasOwnProperty('label')) ? this.todo.label : 'Personal',
-            reminder: this.todo.reminder,
-            isLabelListVisible: false,
+            reminder: (this.todo.hasOwnProperty('reminder')) ? this.todo.reminder : 'No Reminders',
+            priority: (this.todo.hasOwnProperty('priority')) ? this.todo.priority : 4,
         }
     }
 
@@ -48,14 +50,6 @@ export default class TodoDetailsPage extends React.Component {
 
     handleBackPress = () => {
         Actions.pop();
-    };
-
-    showLabelList = () => {
-        this.setState({isLabelListVisible: true});
-    };
-
-    closeLabelList = () => {
-        this.setState({isLabelListVisible: false});
     };
 
     setLabel = (label) => {
@@ -174,27 +168,47 @@ export default class TodoDetailsPage extends React.Component {
     };
 
     renderPriorityInput = () => {
+
+        let flag1Color = (this.state.priority === 4) ? '#FFFFFF' : '#C9C9C9';
+        getBGcolor = (priority) => {
+            return (priority === this.state.priority) ? '#C9C9C9' : '#f7f9fc';
+        };
+
         return (
             <View style={styles.labelInputContainer}>
-                <Image
-                    style={styles.labelInputIcon}
-                    source={require('../../../../assets/images/flags/flag_black.png')} />
+                <View style={styles.labelInputIcon}>
+                    <SvgFlagIcon color="#000000" size="14"/>
+                </View>
                 <Text style={styles.labelInputHint}>Priority</Text>
                 <View style={styles.priorityFlagContainer}>
-                    <Image
-                        style={styles.priorityIcon}
-                        source={require('../../../../assets/images/flags/flag_white.png')} />
-                    <Image
-                        style={styles.priorityIcon}
-                        source={require('../../../../assets/images/flags/flag_yellow.png')} />
-                    <Image
-                        style={styles.priorityIcon}
-                        source={require('../../../../assets/images/flags/flag_orange.png')} />
-                    <Image
-                        style={styles.priorityIcon}
-                        source={require('../../../../assets/images/flags/flag_red.png')} />
+                    <Touchable
+                        style={[styles.priorityIcon, {backgroundColor: getBGcolor(4), borderBottomLeftRadius:5, borderTopLeftRadius: 5}]}
+                        onPress={() => this.handlePriorityChange(4)}>
+                        <SvgFlagIcon color={flag1Color} size="14"/>
+                    </Touchable>
+                    <Touchable
+                        style={[styles.priorityIcon, {backgroundColor: getBGcolor(3)}]}
+                        onPress={() => this.handlePriorityChange(3)}>
+                        <SvgFlagIcon color="#D6CB12" size="14"/>
+                    </Touchable>
+                    <Touchable
+                        style={[styles.priorityIcon, {backgroundColor: getBGcolor(2)}]}
+                        onPress={() => this.handlePriorityChange(2)}>
+                        <SvgFlagIcon color="#DA6B1D" size="14"/>
+                    </Touchable>
+                    <Touchable
+                        style={[styles.priorityIcon, {backgroundColor: getBGcolor(1), borderBottomRightRadius:5, borderTopRightRadius: 5}]}
+                        onPress={() => this.handlePriorityChange(1)}>
+                        <SvgFlagIcon color="#BC0010" size="14"/>
+                    </Touchable>
                 </View>
             </View>
         )
     };
+
+    handlePriorityChange = (priority) => {
+        this.setState({
+            priority: priority,
+        })
+    }
 }

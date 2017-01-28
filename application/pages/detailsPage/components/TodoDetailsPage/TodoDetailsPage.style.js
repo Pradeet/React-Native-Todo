@@ -32,6 +32,7 @@ export default StyleSheet.create({
     },
     labelInputContainer: {
         backgroundColor: inputBGColor,
+        // backgroundColor: 'red',
         flexDirection: 'row',
         height: selectViewHeight,
         alignItems: 'center',
@@ -45,7 +46,7 @@ export default StyleSheet.create({
     },
     labelInputHint: {
         flex: 1,
-        fontSize: 15,
+        fontSize: 16,
     },
     labelInputText: {
         fontSize: 11,
@@ -75,12 +76,18 @@ export default StyleSheet.create({
         width: 18,
     },
     priorityFlagContainer: {
+        backgroundColor: inputBGColor,
         flexDirection: 'row',
         flex: 0,
+        alignItems: 'center',
     },
     priorityIcon: {
-        height: 14,
-        width: 14,
+        height: 32,
+        width: 32,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 0.5,
+        borderColor: '#C9C9C9'
     },
     bigSeperator: {
         backgroundColor: '#eaf0f9',
