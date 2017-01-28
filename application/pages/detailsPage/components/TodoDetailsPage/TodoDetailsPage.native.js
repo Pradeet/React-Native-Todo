@@ -89,7 +89,10 @@ export default class TodoDetailsPage extends React.Component {
                     <Seperator />
                     <View style={styles.bigSeperator} />
                     <Seperator />
-                    {/*{this.renderPriorityInput()}*/}
+                    {this.renderPriorityInput()}
+                    <Seperator />
+                    <View style={styles.bigSeperator} />
+                    <Seperator />
                 </ScrollView>
             </View>
         )
@@ -167,6 +170,31 @@ export default class TodoDetailsPage extends React.Component {
                 <Text style={styles.labelInputText}>{this.state.reminder}</Text>
                 <Text style={styles.labelInputArrow}>{'>'}</Text>
             </Touchable>
+        )
+    };
+
+    renderPriorityInput = () => {
+        return (
+            <View style={styles.labelInputContainer}>
+                <Image
+                    style={styles.labelInputIcon}
+                    source={require('../../../../assets/images/flags/flag_black.png')} />
+                <Text style={styles.labelInputHint}>Priority</Text>
+                <View style={styles.priorityFlagContainer}>
+                    <Image
+                        style={styles.priorityIcon}
+                        source={require('../../../../assets/images/flags/flag_white.png')} />
+                    <Image
+                        style={styles.priorityIcon}
+                        source={require('../../../../assets/images/flags/flag_yellow.png')} />
+                    <Image
+                        style={styles.priorityIcon}
+                        source={require('../../../../assets/images/flags/flag_orange.png')} />
+                    <Image
+                        style={styles.priorityIcon}
+                        source={require('../../../../assets/images/flags/flag_red.png')} />
+                </View>
+            </View>
         )
     };
 }

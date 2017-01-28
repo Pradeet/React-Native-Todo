@@ -39,8 +39,8 @@ export default StyleSheet.create({
         ...viewContainers
     },
     labelInputIcon: {
-        height: 18,
-        width: 18,
+        height: 14,
+        width: 14,
         marginRight: inputPad,
     },
     labelInputHint: {
@@ -73,6 +73,14 @@ export default StyleSheet.create({
     calendarIcon: {
         height: 18,
         width: 18,
+    },
+    priorityFlagContainer: {
+        flexDirection: 'row',
+        flex: 0,
+    },
+    priorityIcon: {
+        height: 14,
+        width: 14,
     },
     bigSeperator: {
         backgroundColor: '#eaf0f9',
