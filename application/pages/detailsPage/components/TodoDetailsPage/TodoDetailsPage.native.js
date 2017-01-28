@@ -20,12 +20,14 @@ export default class TodoDetailsPage extends React.Component {
             title: "This is nothing",
             label: "Shopping",
             date: new Date("2017-02-27T11:14:13.000Z"),
+            reminder: 'No Reminders',
         };
         this.state = {
             id: this.todo.id,
             title: this.todo.title,
             date: (this.todo.hasOwnProperty('date')) ? new Date(this.todo.date) : new Date(),
             label: (this.todo.hasOwnProperty('label')) ? this.todo.label : 'Personal',
+            reminder: this.todo.reminder,
             isLabelListVisible: false,
         }
     }
@@ -83,6 +85,11 @@ export default class TodoDetailsPage extends React.Component {
                     <Seperator />
                     {this.renderDatePicker()}
                     <Seperator />
+                    {this.renderReminderInput()}
+                    <Seperator />
+                    <View style={styles.bigSeperator} />
+                    <Seperator />
+                    {/*{this.renderPriorityInput()}*/}
                 </ScrollView>
             </View>
         )
@@ -107,7 +114,7 @@ export default class TodoDetailsPage extends React.Component {
                     style={styles.labelInputIcon}
                     source={require('../../../../assets/images/document_icon.png')} />
                 <Text style={styles.labelInputHint}>Project</Text>
-                <Text style={styles.labelInputText}>{this.todo.label}</Text>
+                <Text style={styles.labelInputText}>{this.state.label}</Text>
                 <Text style={styles.labelInputArrow}>{'>'}</Text>
             </Touchable>
         )
@@ -117,13 +124,14 @@ export default class TodoDetailsPage extends React.Component {
         return (
             <View style={styles.datePickerContainer}>
                 <Touchable style={styles.datePicker} onPress={this._showDateTimePicker}>
-                    <Text style={styles.dateText}>{this._getDateTime(this.todo.date)}</Text>
+                    <Text style={styles.dateText}>{this._getDateTime(this.state.date)}</Text>
                     <Image
                         style={styles.calendarIcon}
                         source={require('../../../../assets/images/calendar.jpg')} />
                 </Touchable>
                 <DateTimePicker
                     isVisible={this.state.isDateTimePickerVisible}
+                    mode="datetime"
                     onConfirm={this._handleDatePicked}
                     onCancel={this._hideDateTimePicker} />
             </View>
@@ -147,5 +155,18 @@ export default class TodoDetailsPage extends React.Component {
         });
         this.isEdited = true;
         this._hideDateTimePicker()
-    }
+    };
+
+    renderReminderInput = () => {
+        return (
+            <Touchable style={styles.labelInputContainer}>
+                <Image
+                    style={styles.labelInputIcon}
+                    source={require('../../../../assets/images/clock.png')} />
+                <Text style={styles.labelInputHint}>Reminders</Text>
+                <Text style={styles.labelInputText}>{this.state.reminder}</Text>
+                <Text style={styles.labelInputArrow}>{'>'}</Text>
+            </Touchable>
+        )
+    };
 }

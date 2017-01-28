@@ -1,3 +1,3 @@
-/**
- * Created by Pradeet on 27/01/17.
- */
+import App from './TodoDetailsSelectRow';
+
+export default App;
