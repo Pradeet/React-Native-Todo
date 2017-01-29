@@ -6,7 +6,7 @@ import {
 import {Router, Scene} from 'react-native-router-flux';
 
 import TodoHomePage from '../pages/homePage/components/TodoHomePage';
-import TodoDetailsPage from '../pages/detailsPage/components/TodoHomePage';
+import TodoDetailsPage from '../pages/detailsPage/components/TodoDetailsPage';
 
 export default class Navigator extends React.Component {
 
