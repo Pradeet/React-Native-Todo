@@ -9,6 +9,7 @@ import TextInput from '../../../../helpers/TextInput';
 import Touchable from '../../../../helpers/Touchable';
 import SvgFlagIcon from '../../../../helpers/SvgFlagIcon';
 
+import constants from '../../constants/constants';
 import styles from './TodoDetailsPage.style';
 
 export default class TodoDetailsPage extends React.Component {
@@ -113,13 +114,13 @@ export default class TodoDetailsPage extends React.Component {
     renderProjectInput = () => {
         // TODO: implement project select.
         return (
-            <Touchable style={styles.labelInputContainer}>
+            <Touchable style={styles.fieldInputContainer}>
                 <Image
-                    style={styles.labelInputIcon}
+                    style={styles.fieldInputIcon}
                     source={require('../../../../assets/images/document_icon.png')} />
-                <Text style={styles.labelInputHint}>Project</Text>
-                <Text style={styles.labelInputText}>{this.state.project}</Text>
-                <Text style={styles.labelInputArrow}>{'>'}</Text>
+                <Text style={styles.fieldInputHint}>Project</Text>
+                <Text style={styles.fieldInputText}>{this.state.project}</Text>
+                <Text style={styles.fieldInputArrow}>{'>'}</Text>
             </Touchable>
         )
     };
@@ -165,50 +166,58 @@ export default class TodoDetailsPage extends React.Component {
     renderReminderInput = () => {
         // TODO: implement Remainder input.
         return (
-            <Touchable style={styles.labelInputContainer}>
+            <Touchable style={styles.fieldInputContainer}>
                 <Image
-                    style={styles.labelInputIcon}
+                    style={styles.fieldInputIcon}
                     source={require('../../../../assets/images/clock.png')} />
-                <Text style={styles.labelInputHint}>Reminders</Text>
-                <Text style={styles.labelInputText}>{this.state.reminder}</Text>
-                <Text style={styles.labelInputArrow}>{'>'}</Text>
+                <Text style={styles.fieldInputHint}>Reminders</Text>
+                <Text style={styles.fieldInputText}>{this.state.reminder}</Text>
+                <Text style={styles.fieldInputArrow}>{'>'}</Text>
             </Touchable>
         )
     };
 
     renderPriorityInput = () => {
 
-        let flag1Color = (this.state.priority === 4) ? '#FFFFFF' : '#C9C9C9';
+        let p4FlagColor = (this.state.priority === 4) ? constants.priority4FlagColorSelected : constants.priority4FlagColor;
         getBGcolor = (priority) => {
-            return (priority === this.state.priority) ? '#C9C9C9' : '#f7f9fc';
+            return (priority === this.state.priority) ? constants.priority4FlagColor : constants.fieldBackgroundColor;
         };
 
         return (
-            <View style={styles.labelInputContainer}>
-                <View style={styles.labelInputIcon}>
-                    <SvgFlagIcon color="#000000" size="14"/>
+            <View style={styles.fieldInputContainer}>
+                <View style={styles.fieldInputIcon}>
+                    <SvgFlagIcon color="#000000" size={constants.fieldIconSize}/>
                 </View>
-                <Text style={styles.labelInputHint}>Priority</Text>
+                <Text style={styles.fieldInputHint}>Priority</Text>
                 <View style={styles.priorityFlagContainer}>
                     <Touchable
-                        style={[styles.priorityIcon, {backgroundColor: getBGcolor(4), borderBottomLeftRadius:5, borderTopLeftRadius: 5}]}
+                        style={[styles.priorityIcon, {
+                            backgroundColor: getBGcolor(4),
+                            borderBottomLeftRadius: constants.priorityBorderRadius,
+                            borderTopLeftRadius: constants.priorityBorderRadius
+                        }]}
                         onPress={() => this.handlePriorityChange(4)}>
-                        <SvgFlagIcon color={flag1Color} size="14"/>
+                        <SvgFlagIcon color={p4FlagColor} size={constants.fieldIconSize}/>
                     </Touchable>
                     <Touchable
                         style={[styles.priorityIcon, {backgroundColor: getBGcolor(3)}]}
                         onPress={() => this.handlePriorityChange(3)}>
-                        <SvgFlagIcon color="#D6CB12" size="14"/>
+                        <SvgFlagIcon color="#D6CB12" size={constants.fieldIconSize}/>
                     </Touchable>
                     <Touchable
                         style={[styles.priorityIcon, {backgroundColor: getBGcolor(2)}]}
                         onPress={() => this.handlePriorityChange(2)}>
-                        <SvgFlagIcon color="#DA6B1D" size="14"/>
+                        <SvgFlagIcon color="#DA6B1D" size={constants.fieldIconSize}/>
                     </Touchable>
                     <Touchable
-                        style={[styles.priorityIcon, {backgroundColor: getBGcolor(1), borderBottomRightRadius:5, borderTopRightRadius: 5}]}
+                        style={[styles.priorityIcon, {
+                            backgroundColor: getBGcolor(1),
+                            borderBottomRightRadius: constants.priorityBorderRadius,
+                            borderTopRightRadius: constants.priorityBorderRadius
+                        }]}
                         onPress={() => this.handlePriorityChange(1)}>
-                        <SvgFlagIcon color="#BC0010" size="14"/>
+                        <SvgFlagIcon color="#BC0010" size={constants.fieldIconSize}/>
                     </Touchable>
                 </View>
             </View>
@@ -223,13 +232,13 @@ export default class TodoDetailsPage extends React.Component {
 
     renderLabelInput = () => {
         return (
-            <Touchable style={styles.labelInputContainer}>
+            <Touchable style={styles.fieldInputContainer}>
                 <Image
-                    style={styles.labelInputIcon}
+                    style={styles.fieldInputIcon}
                     source={require('../../../../assets/images/label_icon.png')} />
-                <Text style={styles.labelInputHint}>Labels</Text>
-                <Text style={styles.labelInputText}>{this.state.label}</Text>
-                <Text style={styles.labelInputArrow}>{'>'}</Text>
+                <Text style={styles.fieldInputHint}>Labels</Text>
+                <Text style={styles.fieldInputText}>{this.state.label}</Text>
+                <Text style={styles.fieldInputArrow}>{'>'}</Text>
             </Touchable>
         )
     };
@@ -244,13 +253,13 @@ export default class TodoDetailsPage extends React.Component {
     renderParentInput = () => {
         // TODO: implement Parent change handler.
         return (
-            <Touchable style={styles.labelInputContainer}>
+            <Touchable style={styles.fieldInputContainer}>
                 <Image
-                    style={styles.labelInputIcon}
+                    style={styles.fieldInputIcon}
                     source={require('../../../../assets/images/document_icon.png')} />
-                <Text style={styles.labelInputHint}>Parent</Text>
-                <Text style={styles.labelInputText}>{this.state.parent}</Text>
-                <Text style={styles.labelInputArrow}>{'>'}</Text>
+                <Text style={styles.fieldInputHint}>Parent</Text>
+                <Text style={styles.fieldInputText}>{this.state.parent}</Text>
+                <Text style={styles.fieldInputArrow}>{'>'}</Text>
             </Touchable>
         )
     };

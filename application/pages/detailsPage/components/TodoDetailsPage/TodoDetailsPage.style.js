@@ -1,108 +1,103 @@
 import {StyleSheet} from 'react-native';
-
-let inputBGColor = '#f7f9fc';
-let BGcolor = '#eaf0f9';
-let inputPad = 16;
-let selectViewHeight = 46;
+import props from '../../constants/constants';
 
 const viewContainers = {
-    paddingLeft: inputPad,
-    paddingRight: inputPad,
+    paddingLeft: props.fieldPading,
+    paddingRight: props.fieldPading,
 };
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: BGcolor,
+        backgroundColor: props.pageBackgroundColor,
     },
     inputArea: {
         flexDirection: 'column',
     },
     titleInputContainer: {
-        backgroundColor: inputBGColor,
-        flexDirection: 'column',
         flex: 1,
+        flexDirection: 'column',
         justifyContent: 'center',
+        backgroundColor: props.fieldBackgroundColor,
         ...viewContainers,
     },
     titleInput: {
-        height: 52,
-        fontSize: 16,
+        height: props.titleViewHeight,
+        fontSize: props.titleFontSize,
     },
-    labelInputContainer: {
-        backgroundColor: inputBGColor,
-        // backgroundColor: 'red',
-        flexDirection: 'row',
-        height: selectViewHeight,
-        alignItems: 'center',
+    fieldInputContainer: {
         flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: props.fieldBackgroundColor,
+        height: props.fieldViewHeight,
         ...viewContainers
     },
-    labelInputIcon: {
-        height: 14,
-        width: 14,
-        marginRight: inputPad,
+    fieldInputIcon: {
+        height: props.fieldIconSize,
+        width: props.fieldIconSize,
+        marginRight: props.fieldPading,
     },
-    labelInputHint: {
+    fieldInputHint: {
         flex: 1,
-        fontSize: 16,
+        fontSize: props.fieldHintFontSize,
     },
-    labelInputText: {
-        fontSize: 13,
-        color: '#A5A5A5',
+    fieldInputText: {
+        fontSize: props.fieldTextFontSize,
+        color: props.fieldTextColor,
         paddingRight: 8,
     },
-    labelInputArrow: {
-        fontSize: 18,
-        color: '#A5A5A5',
+    fieldInputArrow: {
+        fontSize: props.fieldArrowFontSize,
+        color: props.fieldArrowColor,
     },
     datePickerContainer: {
         flex: 1,
     },
     datePicker: {
-        ...viewContainers,
-        backgroundColor: inputBGColor,
-        height: selectViewHeight,
         flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: props.fieldBackgroundColor,
+        height: props.fieldViewHeight,
+        ...viewContainers,
     },
     dateText: {
         flex: 1,
         alignItems: 'center'
     },
     calendarIcon: {
-        height: 18,
-        width: 18,
+        height: props.calenderIconSize,
+        width: props.calenderIconSize,
     },
     priorityFlagContainer: {
-        backgroundColor: inputBGColor,
-        flexDirection: 'row',
         flex: 0,
+        flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: props.fieldBackgroundColor,
     },
     priorityIcon: {
-        height: 32,
-        width: 32,
         alignItems: 'center',
         justifyContent: 'center',
+        height: props.priorityIconSize,
+        width: props.priorityIconSize,
+        borderColor: props.priorityIconBorderColor,
         borderWidth: 0.5,
-        borderColor: '#C9C9C9'
     },
     deleteButtonContainer: {
-        backgroundColor: inputBGColor,
         flexDirection: 'row',
-        height: selectViewHeight,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: props.fieldBackgroundColor,
+        height: props.fieldViewHeight,
         ...viewContainers
     },
     deleteText: {
         color: 'red',
-        fontSize: 16,
+        fontSize: props.fieldHintFontSize,
     },
     bigSeperator: {
-        backgroundColor: '#eaf0f9',
-        height: 24,
+        backgroundColor: props.bigSeperatorColor,
+        height: props.bigSeperatorHeight,
     }
 })
