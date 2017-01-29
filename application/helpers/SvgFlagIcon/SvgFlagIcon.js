@@ -34,7 +34,6 @@ export default class SvgFlagIcon extends React.Component {
     }
 
     render() {
-        console.log(this.state.viewBox);
         return (
             <Svg
                 height={this.state.size}

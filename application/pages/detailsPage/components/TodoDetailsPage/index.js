@@ -1,3 +1,3 @@
-import App from './TodoDetailsPage.native';
+import App from './TodoDetailsPage';
 
 export default App;

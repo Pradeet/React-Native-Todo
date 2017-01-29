@@ -30,7 +30,7 @@ export default class TodoActivity extends Component {
                     ...snap.val(),
                 }])
             }, () => {
-                console.log('All todos ----- ', this.state.todos)
+                console.log('All todos ----- ', this.state.todos);
             })
         });
 
@@ -80,6 +80,7 @@ export default class TodoActivity extends Component {
     };
 
     handleTodoEdit = (newTodo) => {
+        console.log('newTodo', newTodo);
         let currentRef = this.todoRef.child(newTodo.id);
         delete newTodo.id;
         currentRef.update(newTodo);

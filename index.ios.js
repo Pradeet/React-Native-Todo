@@ -26,8 +26,8 @@ export default class Todo extends Component {
     return (
         // <TodoActivity />
         // <ProfileListView />
-        // <Navigator />
-        <TodoDetailsPage />
+        <Navigator />
+        // <TodoDetailsPage />
     )
   }
 }

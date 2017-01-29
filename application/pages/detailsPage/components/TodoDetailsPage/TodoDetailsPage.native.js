@@ -25,47 +25,33 @@ export default class TodoDetailsPage extends React.Component {
             priority: 4,
         };
         this.state = {
-            id: this.todo.id,
-            title: this.todo.title,
-            date: (this.todo.hasOwnProperty('date')) ? new Date(this.todo.date) : new Date(),
-            project: (this.todo.hasOwnProperty('project')) ? this.todo.project : 'Personal',
-            reminder: (this.todo.hasOwnProperty('reminder')) ? this.todo.reminder : 'No Reminders',
-            priority: (this.todo.hasOwnProperty('priority')) ? this.todo.priority : 4,
-            label: (this.todo.hasOwnProperty('labels')) ? this.todo.label : 'No Labels',
-            parent: (this.todo.hasOwnProperty('parents')) ? this.todo.parent : 'No Parents',
+            id: props.todo.id,
+            title: props.todo.title,
+            date: (props.todo.hasOwnProperty('date')) ? new Date(props.todo.date) : new Date(),
+            project: (props.todo.hasOwnProperty('project')) ? props.todo.project : 'Personal',
+            reminder: (props.todo.hasOwnProperty('reminder')) ? props.todo.reminder : 'No Reminders',
+            priority: (props.todo.hasOwnProperty('priority')) ? props.todo.priority : 4,
+            label: (props.todo.hasOwnProperty('labels')) ? props.todo.label : 'No Labels',
+            parent: (props.todo.hasOwnProperty('parents')) ? props.todo.parent : 'No Parents',
         }
     }
 
     handleSubmit = () => {
-        console.log('Submitting edited todo');
-        if (this.isEdited) {
-            console.log('The data is edited');
-            this.props.handleTodoEdit({
-                id: this.state.id,
-                title: this.state.title,
-                date: this.state.date,
-                label: this.state.label,
-            });
-            Actions.pop();
-        }
+        this.props.handleTodoEdit({
+            id: this.state.id,
+            title: this.state.title,
+            date: this.state.date,
+            project: this.state.project,
+            reminder: this.state.reminder,
+            priority: this.state.priority,
+            label: this.state.label,
+            parent: this.state.parent,
+        });
+        Actions.pop();
     };
 
     handleBackPress = () => {
         Actions.pop();
-    };
-
-    setLabel = (label) => {
-        if(label !== this.state.label){
-            this.setState({ label: label});
-            this.isEdited = true;
-        }
-    };
-
-    setTitle = (text) => {
-        this.setState({
-            title: text,
-        });
-        this.isEdited = true;
     };
 
     render() {
@@ -113,7 +99,15 @@ export default class TodoDetailsPage extends React.Component {
         )
     };
 
+    setTitle = (text) => {
+        this.setState({
+            title: text,
+        });
+        this.isEdited = true;
+    };
+
     renderProjectInput = () => {
+        // TODO: implement project select.
         return (
             <Touchable style={styles.labelInputContainer}>
                 <Image
@@ -138,6 +132,7 @@ export default class TodoDetailsPage extends React.Component {
                 <DateTimePicker
                     isVisible={this.state.isDateTimePickerVisible}
                     mode="datetime"
+                    date={this.state.date}
                     onConfirm={this._handleDatePicked}
                     onCancel={this._hideDateTimePicker} />
             </View>
@@ -164,6 +159,7 @@ export default class TodoDetailsPage extends React.Component {
     };
 
     renderReminderInput = () => {
+        // TODO: implement Remainder input.
         return (
             <Touchable style={styles.labelInputContainer}>
                 <Image
@@ -234,7 +230,15 @@ export default class TodoDetailsPage extends React.Component {
         )
     };
 
+    setLabel = (label) => {
+        if(label !== this.state.label){
+            this.setState({ label: label});
+            this.isEdited = true;
+        }
+    };
+
     renderParentInput = () => {
+        // TODO: implement Parent change handler.
         return (
             <Touchable style={styles.labelInputContainer}>
                 <Image
@@ -248,6 +252,7 @@ export default class TodoDetailsPage extends React.Component {
     };
 
     renderDeleteButton = () => {
+        // TODO: implement Todo delete from Details Page.
         return (
             <Touchable style={styles.deleteButtonContainer}>
                 <Text style={styles.deleteText}>Delete Todo</Text>
