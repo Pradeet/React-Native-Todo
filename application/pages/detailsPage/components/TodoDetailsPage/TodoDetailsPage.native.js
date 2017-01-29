@@ -36,8 +36,8 @@ export default class TodoDetailsPage extends React.Component {
         }
     }
 
-    handleSubmit = () => {
-        this.props.handleTodoEdit({
+    getTodo = () => {
+        return {
             id: this.state.id,
             title: this.state.title,
             date: this.state.date,
@@ -46,7 +46,11 @@ export default class TodoDetailsPage extends React.Component {
             priority: this.state.priority,
             label: this.state.label,
             parent: this.state.parent,
-        });
+        }
+    };
+
+    handleSubmit = () => {
+        this.props.handleTodoEdit(this.getTodo());
         Actions.pop();
     };
 
@@ -252,11 +256,15 @@ export default class TodoDetailsPage extends React.Component {
     };
 
     renderDeleteButton = () => {
-        // TODO: implement Todo delete from Details Page.
         return (
-            <Touchable style={styles.deleteButtonContainer}>
+            <Touchable style={styles.deleteButtonContainer} onPress={this.handleDeleteButton}>
                 <Text style={styles.deleteText}>Delete Todo</Text>
             </Touchable>
         )
-    }
+    };
+
+    handleDeleteButton = () => {
+        this.props.handleTodoDelete(this.getTodo());
+        Actions.pop();
+    };
 }
